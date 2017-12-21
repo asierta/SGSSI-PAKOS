@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical">
+    <TextView
+        android:text="Nombre"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:gravity="left" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="27.5dp"
+        android:id="@+id/Nombre"
+        android:inputType="text" />
+    <TextView
+        android:text="Apellidos"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:gravity="left" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="27.5dp"
+        android:id="@+id/Apellidos"
+        android:inputType="text" />
+    <TextView
+        android:text="Email"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="27.5dp"
+        android:id="@+id/Email"
+        android:inputType="textEmailAddress" />
+    <TextView
+        android:text="Contraseña"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2" />
+    <EditText
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="25.5dp"
+        android:id="@+id/Password" />
+    <TextView
+        android:text="Repetir contraseña"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2" />
+    <EditText
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="25.5dp"
+        android:id="@+id/RPassword" />
+    <Button
+        android:text="Registrarse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Registrarse" />
+    <TextView
+        android:text="¿Ya tienes cuenta? Inicia sesión"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:gravity="center" />
+</LinearLayout>
