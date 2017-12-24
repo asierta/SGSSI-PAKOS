@@ -1,0 +1,71 @@
+pragma solidity ^0.4.15;
+
+contract Pakoin {
+    /* This creates an array with all balances */
+    mapping (address => uint256) public balanceOf;
+  	mapping (address => uint256) public vales;
+  	string public name;
+    string public symbol;
+    uint8 public decimals;
+  	address public pakos;
+
+    event TransferPakoins(address indexed from, address indexed to, uint256 value);
+    event TransferVales(address indexed from, address indexed to, uint256 value);
+  
+    /* Initializes contract with initial supply tokens to the creator of the contract */
+    function Pakoin(uint256 initialSupply, string tokenName, string tokenSymbol) public {
+        balanceOf[msg.sender] = initialSupply;              // Give the creator all initial tokens
+      	vales[msg.sender] = initialSupply;					// Número de vales iniciales
+        name = tokenName;                                   // Set the name for display purposes
+        symbol = tokenSymbol;                               // Set the symbol for display purposes
+        decimals = 0;                            			// Amount of decimals for display purposes
+        pakos = msg.sender;									// Inicializamos el valor de la dirección de la cafetería Pako's
+    }
+  
+    /* Send pakoins */
+  	function transfer(uint256 _value, address _to) public {  
+      	require(msg.sender == pakos);
+        require(balanceOf[pakos] >= _value);           			// Check if the sender has enough
+     // require(balanceOf[_to] + _value >= balanceOf[_to]);     // Check for overflows
+        balanceOf[_to] += _value;                    			// Add the same to the recipient
+        balanceOf[pakos] -= _value;                           	// Subtract from Pako's 
+        /* Notify anyone listening that this transfer took place */
+        TransferPakoins(pakos, _to, _value);
+    }
+
+    /* Vale para comprar diez comidas */
+    function comprarDiezVales() public { 			            	 
+        require(balanceOf[msg.sender] >= 10);          	     // Check if the sender has enough
+        require(vales[pakos] >= 10); 			 			 // Check for overflows
+        balanceOf[msg.sender] -= 10;                     	 // Subtract pakoins from the sender
+        vales[msg.sender] += 11;    						 // Add vales to the sender
+        balanceOf[pakos] += 10;                              // Add the same pakoins Pako's
+        vales[pakos] -= 10;									 // Substract vales from Pako's
+        /* Notify anyone listening that this transfer took place */
+        TransferPakoins(msg.sender, pakos, 10);
+      	TransferVales(pakos, msg.sender, 10);
+    }
+
+  	/* Vale para comprar una sola comida */
+    function comprarUnVale() public {  
+        require(balanceOf[msg.sender] >= 1);          	     // Check if the sender has enough
+        require(vales[pakos] >= 1); 			 			 // Check for overflows
+        balanceOf[msg.sender] -= 1;                     	 // Subtract pakoins from the sender
+        vales[msg.sender] += 1;    						 	 // Add a vale to the sender
+        balanceOf[pakos] += 1;                               // Add the same pakoins Pako's
+        vales[pakos] -= 1;									 // Substract a vale from Pako's
+        /* Notify anyone listening that this transfer took place */
+        TransferPakoins(msg.sender, pakos, 1);
+     	TransferVales(pakos, msg.sender, 1);
+    }
+  
+   function canjearVales(uint256 _value) public {  
+        require(vales[msg.sender] >= _value);          	     	 // Check if the sender has enough
+        require(5 >= _value);									 // El numero de vales a canjear no podrá ser mayor a cinco
+        vales[msg.sender] -= _value;    						 // Substract the vales from the sender
+        vales[pakos] += _value;									 // Add the vales to Pako's
+        /* Notify anyone listening that this transfer took place */
+     	TransferVales(msg.sender, pakos, 1);
+    }
+  
+}
