@@ -3,9 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PakosFISS"
              x:Class="PakosFISS.MainPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10" Spacing="10">
+                <Label Text="Empleados"
+Font="24"
+HorizontalOptions="Center"
+VerticalOptions="Center"
+FontAttributes="Bold" />
+                <Entry x:Name="nombresEntry"
+Placeholder="Nombres" />
+                <Entry x:Name="apellidosEntry"
+Placeholder="Apellidos" />
+                <Entry x:Name="salarioEntry"
+Placeholder="Salario"
+Keyboard="Numeric" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Fecha Contratación: "
+VerticalOptions="Center" />
+                    <DatePicker x:Name="fechaContratoDatePicker" />
+                    <Label Text="Activo: "
+VerticalOptions="Center" />
+                    <Switch x:Name="activoSwitch"
+VerticalOptions="Center"
+IsToggled="True" />
+                </StackLayout>
+                <Button x:Name="agregarButton"
+Text="Agregar"
+BackgroundColor="Navy"
+TextColor="White" />
+                <ListView x:Name="listaListView" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 
-	<Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
 
 </ContentPage>
